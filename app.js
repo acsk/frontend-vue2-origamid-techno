@@ -7,8 +7,18 @@ const vm = new Vue({
 
         mensagem: "Vue carregado! 2021",
         produtos: [],
-        produto: false
+        carrinho: [],
+        carrinhoTotal: 0,
+        produto: false,
+        produto: false,
 
+    },
+    filters: {
+
+        numeroPreco(valor) {
+
+            return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+        }
     },
 
     methods: {
@@ -32,7 +42,23 @@ const vm = new Vue({
                     this.produto = r;
                 })
 
-        }
+        },
+
+        fecharModal({
+            target,
+            currentTarget
+        }) {
+
+            if (target === currentTarget) this.produto = false
+        },
+
+        adicionarItem() {
+
+            this.carrinho.push(this.produto.id)
+            this.produto.estoque--
+        },
+
+
 
 
     },
