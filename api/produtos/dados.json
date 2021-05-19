@@ -1,0 +1,46 @@
+[
+
+    {
+        "id": "notebook",
+        "nome": "Notebook",
+        "preco": 2999,
+        "descricao": "Lorem ipsum...",
+        "img": "./api/produtos/notebook/notebook.jpg ",
+        "estoque": 12,
+        "avaliacoes": [
+
+            {
+                "nome": "Fábio",
+                "estrelas": 5,
+                "descricao": "Gostei muito do produto"
+            },
+            {
+                "nome": "Nathalia",
+                "estrelas": 4,
+                "descricao": "Produto execelente, entrega super rápida"
+            }
+        ]
+
+    },
+    {
+        "id": "smartphone",
+        "nome": "smartphone",
+        "preco": 4999,
+        "img": "./api/produtos/smartphone/smartphone.jpg"
+
+    },
+    {
+        "id": "tablet",
+        "nome": "tablet",
+        "preco": 1999,
+        "img": "./api/produtos/tablet/tablet.jpg"
+
+    },
+    {
+        "id": "smartwatch",
+        "nome": "smartwatch",
+        "preco": 59,
+        "img": "./api/produtos/smartwatch/smartwatch.jpg"
+
+    }
+]

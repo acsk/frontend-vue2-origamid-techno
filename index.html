@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techno - Origamid</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="app">
+
+    <section class="modal">
+        {{produto}}
+    </section>
+
+        <section class="produtos">
+            <div v-for="item in produtos" @click="fetchProduto(item.id)" :key="item.id" class="produto">
+            <img class="produto_img" :src="item.img" :alt="item.nome">
+            <div class="produto_info">
+                <span class="produto_preco">{{item.preco}}</span>
+                <h2 class="produto_titulo">{{item.nome}}</h2>
+            </div>
+        
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="./vue.min.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
