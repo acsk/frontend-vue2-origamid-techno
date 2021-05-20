@@ -8,9 +8,9 @@ const vm = new Vue({
         mensagem: "Vue carregado! 2021",
         produtos: [],
         carrinho: [],
-
         produto: false,
-        produto: false,
+        mensagemAlerta: "Produto adicionado",
+        ativoAlerta: false
 
     },
     filters: {
@@ -75,6 +75,7 @@ const vm = new Vue({
             this.produto.estoque--
                 const { id, preco, nome } = this.produto
             this.carrinho.push({ id, preco, nome })
+            this.alerta(`${nome} - ${preco}:  foi adicionado com sucesso`)
 
         },
 
@@ -88,10 +89,21 @@ const vm = new Vue({
 
             if (window.localStorage.carrinho)
                 this.carrinho = JSON.parse(window.localStorage.carrinho)
+        },
+
+        alerta(mensagem) {
+            this.mensagemAlerta = mensagem
+            this.ativoAlerta = true
+            setTimeout(() => {
+                this.ativoAlerta = false
+            }, 1500);
+
+
         }
 
 
     },
+
 
     watch: {
         carrinho() {
