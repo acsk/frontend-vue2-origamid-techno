@@ -8,7 +8,7 @@ const vm = new Vue({
         mensagem: "Vue carregado! 2021",
         produtos: [],
         carrinho: [],
-        carrinhoTotal: 0,
+
         produto: false,
         produto: false,
 
@@ -18,6 +18,24 @@ const vm = new Vue({
         numeroPreco(valor) {
 
             return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+        }
+    },
+
+    computed: {
+
+
+        carrinhoTotal() {
+
+            let total = 0;
+
+            if (this.carrinho.length) {
+
+                this.carrinho.forEach(item => {
+                    total += item.preco
+                });
+            }
+
+            return total
         }
     },
 
@@ -54,17 +72,37 @@ const vm = new Vue({
 
         adicionarItem() {
 
-            this.carrinho.push(this.produto.id)
             this.produto.estoque--
+                const { id, preco, nome } = this.produto
+            this.carrinho.push({ id, preco, nome })
+
         },
 
 
+        removerItem(index) {
+
+            this.carrinho.splice(index, 1)
+        },
+
+        checarLocalStorage() {
+
+            if (window.localStorage.carrinho)
+                this.carrinho = JSON.parse(window.localStorage.carrinho)
+        }
 
 
     },
 
+    watch: {
+        carrinho() {
+
+            window.localStorage.carrinho = JSON.stringify(this.carrinho)
+        }
+    },
+
     created() {
 
-        this.fecthProdutos();
+        this.fecthProdutos()
+        this.checarLocalStorage()
     }
 })
